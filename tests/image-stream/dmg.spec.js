@@ -35,8 +35,8 @@ describe('ImageStream: DMG', function() {
 
       describe('given an dmg image', function() {
         tester.extractFromFilePath(
-          path.join(DMG_PATH, 'zlib-compressed.dmg'),
-          path.join(IMAGES_PATH, 'zlib-compressed.img'));
+          path.join(DMG_PATH, 'raspberrypi-compressed.dmg'),
+          path.join(IMAGES_PATH, 'raspberrypi.img'));
       });
 
     });
@@ -44,8 +44,8 @@ describe('ImageStream: DMG', function() {
     describe('.getImageMetadata()', function() {
 
       it('should return the correct metadata', function() {
-        const image = path.join(DMG_PATH, 'zlib-compressed.dmg');
-        const uncompressedSize = fs.statSync(path.join(IMAGES_PATH, 'zlib-compressed.img')).size;
+        const image = path.join(DMG_PATH, 'raspberrypi-compressed.dmg');
+        const uncompressedSize = fs.statSync(path.join(IMAGES_PATH, 'raspberrypi.img')).size;
         const compressedSize = fs.statSync(image).size;
 
         return imageStream.getImageMetadata(image).then((metadata) => {
@@ -74,8 +74,8 @@ describe('ImageStream: DMG', function() {
 
       describe('given an dmg image', function() {
         tester.extractFromFilePath(
-          path.join(DMG_PATH, 'raw.dmg'),
-          path.join(IMAGES_PATH, 'raw.img'));
+          path.join(DMG_PATH, 'raspberrypi-raw.dmg'),
+          path.join(IMAGES_PATH, 'raspberrypi.img'));
       });
 
     });
@@ -83,8 +83,8 @@ describe('ImageStream: DMG', function() {
     describe('.getImageMetadata()', function() {
 
       it('should return the correct metadata', function() {
-        const image = path.join(DMG_PATH, 'raw.dmg');
-        const uncompressedSize = fs.statSync(path.join(IMAGES_PATH, 'raw.img')).size;
+        const image = path.join(DMG_PATH, 'raspberrypi-raw.dmg');
+        const uncompressedSize = fs.statSync(path.join(IMAGES_PATH, 'raspberrypi.img')).size;
         const compressedSize = fs.statSync(image).size;
 
         return imageStream.getImageMetadata(image).then((metadata) => {
