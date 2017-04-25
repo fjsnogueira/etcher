@@ -9,7 +9,7 @@ require('angular-mocks');
 describe('Browser: UpdateNotifier', function() {
 
   beforeEach(angular.mock.module(
-    require('../../../lib/gui/components/update-notifier/update-notifier')
+    require('../../../lib/gui/components/update-notifier')
   ));
 
   describe('UpdateNotifierService', function() {
@@ -17,11 +17,9 @@ describe('Browser: UpdateNotifier', function() {
     describe('.shouldCheckForUpdates()', function() {
 
       let UpdateNotifierService;
-      let UPDATE_NOTIFIER_SLEEP_DAYS;
 
-      beforeEach(angular.mock.inject(function(_UpdateNotifierService_, _UPDATE_NOTIFIER_SLEEP_DAYS_) {
+      beforeEach(angular.mock.inject(function(_UpdateNotifierService_) {
         UpdateNotifierService = _UpdateNotifierService_;
-        UPDATE_NOTIFIER_SLEEP_DAYS = _UPDATE_NOTIFIER_SLEEP_DAYS_;
       }));
 
       describe('given the `sleepUpdateCheck` is disabled', function() {
@@ -72,7 +70,7 @@ describe('Browser: UpdateNotifier', function() {
         describe('given the `lastUpdateNotify` was updated long ago', function() {
 
           beforeEach(function() {
-            const SLEEP_MS = units.daysToMilliseconds(UPDATE_NOTIFIER_SLEEP_DAYS);
+            const SLEEP_MS = units.daysToMilliseconds(UpdateNotifierService.UPDATE_NOTIFIER_SLEEP_DAYS);
             settings.set('lastUpdateNotify', Date.now() + SLEEP_MS + 1000);
           });
 
